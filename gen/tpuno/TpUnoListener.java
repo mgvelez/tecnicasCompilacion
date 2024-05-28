@@ -18,6 +18,16 @@ public interface TpUnoListener extends ParseTreeListener {
 	 */
 	void exitPrograma(TpUnoParser.ProgramaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#declaracionGlobal}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaracionGlobal(TpUnoParser.DeclaracionGlobalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#declaracionGlobal}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaracionGlobal(TpUnoParser.DeclaracionGlobalContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TpUnoParser#instrucciones}.
 	 * @param ctx the parse tree
 	 */
@@ -47,6 +57,36 @@ public interface TpUnoListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDeclaracion(TpUnoParser.DeclaracionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion(TpUnoParser.AsignacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion(TpUnoParser.AsignacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#estructuraControl}.
+	 * @param ctx the parse tree
+	 */
+	void enterEstructuraControl(TpUnoParser.EstructuraControlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#estructuraControl}.
+	 * @param ctx the parse tree
+	 */
+	void exitEstructuraControl(TpUnoParser.EstructuraControlContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#llamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterLlamadaFuncion(TpUnoParser.LlamadaFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#llamadaFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitLlamadaFuncion(TpUnoParser.LlamadaFuncionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link TpUnoParser#tipo}.
 	 * @param ctx the parse tree
@@ -78,16 +118,6 @@ public interface TpUnoListener extends ParseTreeListener {
 	 */
 	void exitIdent(TpUnoParser.IdentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TpUnoParser#asignacion}.
-	 * @param ctx the parse tree
-	 */
-	void enterAsignacion(TpUnoParser.AsignacionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link TpUnoParser#asignacion}.
-	 * @param ctx the parse tree
-	 */
-	void exitAsignacion(TpUnoParser.AsignacionContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link TpUnoParser#expresion}.
 	 * @param ctx the parse tree
 	 */
@@ -98,15 +128,45 @@ public interface TpUnoListener extends ParseTreeListener {
 	 */
 	void exitExpresion(TpUnoParser.ExpresionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TpUnoParser#iwhile}.
+	 * Enter a parse tree produced by {@link TpUnoParser#bloque}.
 	 * @param ctx the parse tree
 	 */
-	void enterIwhile(TpUnoParser.IwhileContext ctx);
+	void enterBloque(TpUnoParser.BloqueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TpUnoParser#iwhile}.
+	 * Exit a parse tree produced by {@link TpUnoParser#bloque}.
 	 * @param ctx the parse tree
 	 */
-	void exitIwhile(TpUnoParser.IwhileContext ctx);
+	void exitBloque(TpUnoParser.BloqueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#funcion}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncion(TpUnoParser.FuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#funcion}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncion(TpUnoParser.FuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#parametros}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametros(TpUnoParser.ParametrosContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#parametros}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametros(TpUnoParser.ParametrosContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#parametro}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametro(TpUnoParser.ParametroContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#parametro}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametro(TpUnoParser.ParametroContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link TpUnoParser#condicion}.
 	 * @param ctx the parse tree
@@ -128,6 +188,36 @@ public interface TpUnoListener extends ParseTreeListener {
 	 */
 	void exitComparador(TpUnoParser.ComparadorContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#ifStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfStmt(TpUnoParser.IfStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#ifStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfStmt(TpUnoParser.IfStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#forStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterForStmt(TpUnoParser.ForStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#forStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitForStmt(TpUnoParser.ForStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TpUnoParser#whileStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileStmt(TpUnoParser.WhileStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TpUnoParser#whileStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileStmt(TpUnoParser.WhileStmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link TpUnoParser#breakStmt}.
 	 * @param ctx the parse tree
 	 */
@@ -138,13 +228,13 @@ public interface TpUnoListener extends ParseTreeListener {
 	 */
 	void exitBreakStmt(TpUnoParser.BreakStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link TpUnoParser#ifStmt}.
+	 * Enter a parse tree produced by {@link TpUnoParser#returnStmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfStmt(TpUnoParser.IfStmtContext ctx);
+	void enterReturnStmt(TpUnoParser.ReturnStmtContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link TpUnoParser#ifStmt}.
+	 * Exit a parse tree produced by {@link TpUnoParser#returnStmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfStmt(TpUnoParser.IfStmtContext ctx);
+	void exitReturnStmt(TpUnoParser.ReturnStmtContext ctx);
 }

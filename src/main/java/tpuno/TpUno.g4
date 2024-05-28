@@ -46,21 +46,31 @@ NUMERO : DIGITO+ ('.' DIGITO*)? ;
 ID : LETRA (LETRA | DIGITO | '_')* ;
 
 // La estructura del programa
-programa : instrucciones EOF ;
+programa : (funcion | declaracionGlobal)* EOF ;
+
+declaracionGlobal : tipo listaIdent PYC ;
 
 instrucciones : instruccion instrucciones
               |
               ;
 
-// Tipos de instrucciones posibles
-
 instruccion : declaracion
             | asignacion
             | estructuraControl
+            | bloque
             | llamadaFuncion PYC
+            | returnStmt
             ;
 
 declaracion : tipo listaIdent PYC ;
+asignacion : ID IGUAL expresion PYC ;
+
+estructuraControl :  ifStmt
+                   | forStmt
+                   | whileStmt
+                   ;
+
+llamadaFuncion : ID PA expresion PC ;
 
 tipo        : INT | DOUBLE | VOID ;
 
@@ -68,21 +78,21 @@ listaIdent  : ident (COMA ident)* ;
 
 ident       : ID (IGUAL expresion)? ;
 
-asignacion : ID IGUAL expresion PYC ;
+expresion : expresion (MAS | MENOS | MULT | DIV ) expresion
+          | NUMERO
+          | ID
+          | llamadaFuncion
+          | PA expresion PC
+          ;
 
-expresion  : expresion (MAS | MENOS | MULT | DIV) expresion
-           | NUMERO
-           | ID
-           | llamadaFuncion
-           | PA expresion PC
-           ;
+bloque : LLA instrucciones LLC ;
 
-estructuraControl : ifStmt
-                   | forStmt
-                   | whileStmt
-                   ;
+funcion : tipo ID PA parametros PC bloque ;
 
-llamadaFuncion : ID PA (expresion (COMA expresion)*)? PC ;
+parametros : parametro (COMA parametro)*
+            |
+            ;
+parametro  : tipo ID ;
 
 condicion : expresion comparador expresion ;
 
@@ -91,8 +101,9 @@ comparador : MENOR | MAYOR | MENIG | MAYIG | DIF | IGUALIGUAL ;
 
 // Estructuras de control
 
-ifStmt : IF PA condicion PC instrucciones (ELSE instrucciones)? ;
-forStmt : FOR PA (declaracion | asignacion)? PYC condicion? PYC asignacion? PC instrucciones ;
-whileStmt : WHILE PA condicion PC instrucciones ;
+ifStmt : IF PA condicion PC instruccion (ELSE instruccion)? ;
+forStmt : FOR PA asignacion condicion PYC asignacion PC instruccion ;
+whileStmt : WHILE PA condicion PC instruccion ;
 breakStmt : BREAK PYC ;
+returnStmt : RETURN expresion PYC;
 

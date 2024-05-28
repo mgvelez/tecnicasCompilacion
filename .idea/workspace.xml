@@ -5,27 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d41ec30d-45b0-4932-b5ff-12d225a262e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladores.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladores.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresBaseVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/compiladores/compiladoresVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpuno/EscuchaTpUno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUno.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUno.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/Escucha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$AsignacionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$DeclaracionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionesContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$ProgramaContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/AppTpUno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/EscuchaTpUno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$AsignacionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$BreakStmtContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ComparadorContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$CondicionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$DeclaracionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ExpresionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IdentContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IfStmtContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionesContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IwhileContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ListaIdentContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ProgramaContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$TipoContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/input/tpUno.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,13 +96,15 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppTpUno.executor&quot;: &quot;Run&quot;,
     &quot;Maven.proyectobase [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.proyectobase [compile].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matias/Documents/universidad/TC/TP1/tecnicasCompilacion/pom.xml&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matias/Documents/universidad/TC/TP1/tecnicasCompilacion/input&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,6 +117,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/input" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.AppTpUno">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="compiladores.App" />
@@ -132,7 +176,8 @@
       <option name="presentableId" value="Default" />
       <updated>1716513179949</updated>
       <workItem from="1716513181047" duration="1326000" />
-      <workItem from="1716514514851" duration="17000" />
+      <workItem from="1716514514851" duration="776000" />
+      <workItem from="1716841053810" duration="10340000" />
     </task>
     <servers />
   </component>
@@ -141,5 +186,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/compiladores/App.java</url>
+          <line>9</line>
+          <properties class="compiladores.App" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
