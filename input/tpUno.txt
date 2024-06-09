@@ -1,6 +1,6 @@
 int main() {
     int a = 5;
-    double b = 10.5;
+    double b = 105;
     int c;
 
     c = a + 2;
@@ -25,5 +25,5 @@ int main() {
 }
 
 void printResult(int result) {
-    result = result * 2;
+   result = result * 2;
 }

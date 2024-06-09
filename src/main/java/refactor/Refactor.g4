@@ -1,4 +1,4 @@
-grammar TpUno;
+grammar Refactor;
 /*
 @header {
 package compiladores;
@@ -16,23 +16,29 @@ LLC : '}' ;
 PYC : ';' ;
 IGUAL : '=' ;
 COMA : ',';
+PUNTO : '.';
 IGUALIGUAL: '==' ;
 MENOR      : '<' ;
 MAYOR      : '>' ;
 MENIG      : '<=' ;
 MAYIG      : '>=' ;
 DIF      : '!=' ;
+MAIN       : 'main';
 
 // Operadores
 MAS    : '+' ;
 MENOS   : '-' ;
 MULT    : '*' ;
 DIV     : '/' ;
+INCREMENTO : '++' ;
+DECREMENTO : '--' ;
 
 
 // Palabras reservada
 INT : 'int' ;
+FLOAT : 'float' ;
 DOUBLE : 'double' ;
+STRING : 'String';
 IF     : 'if';
 ELSE   : 'else';
 FOR    : 'for';
@@ -41,69 +47,61 @@ BREAK  : 'break';
 RETURN : 'return';
 VOID   : 'void';
 
-NUMERO : DIGITO+ ('.' DIGITO*)? ;
+NUMERO : DIGITO+ (PUNTO DIGITO*)? ;
 
 ID : LETRA (LETRA | DIGITO | '_')* ;
 
-// La estructura del programa
-programa : (funcion | declaracionGlobal)* EOF ;
+programa : instrucciones EOF ;
 
-declaracionGlobal : tipo listaIdent PYC ;
-//stat context : assign context
 instrucciones : instruccion instrucciones
               |
               ;
 
-instruccion : declaracion
+instruccion : programaMain
+            | LLA instrucciones LLC
+            | declaracion
             | asignacion
             | estructuraControl
             | bloque
-            | llamadaFuncion PYC
             | returnStmt
             ;
 
-declaracion : tipo listaIdent PYC ;
-asignacion : ID IGUAL expresion PYC ;
+programaMain : (VOID | tipoDato) MAIN PA PC bloque;
+
+declaracion : tipoDato (ID (IGUAL expresion)? | listaIdent) PYC ;
+listaIdent  : ident (COMA ident)* ;
+ident       : ID (IGUAL expresion)? ;
+
+asignacion : ID (IGUAL expresion)? PYC
+            | incremento
+            ;
+
+incremento : ID (INCREMENTO | DECREMENTO);
+
+expresion : expresion (MAS | MENOS | MULT | DIV ) expresion
+          | NUMERO
+          | ID
+          | PA expresion PC
+          | ID IGUAL expresion
+          | incremento
+          | asignacion
+          | listaIdent
+          ;
+
+bloque : LLA instrucciones LLC ;
+
+tipoDato : INT | FLOAT | DOUBLE | STRING ;
 
 estructuraControl :  ifStmt
                    | forStmt
                    | whileStmt
                    ;
 
-llamadaFuncion : ID PA expresion PC ;
-
-tipo        : INT | DOUBLE | VOID ;
-
-listaIdent  : ident (COMA ident)* ;
-
-ident       : ID (IGUAL expresion)? ;
-
-expresion : expresion (MAS | MENOS | MULT | DIV ) expresion
-          | NUMERO
-          | ID
-          | llamadaFuncion
-          | PA expresion PC
-          ;
-
-bloque : LLA instrucciones LLC ;
-
-funcion : tipo ID PA parametros PC bloque ;
-
-parametros : parametro (COMA parametro)*
-            |
-            ;
-parametro  : tipo ID ;
-
 condicion : expresion comparador expresion ;
 
 comparador : MENOR | MAYOR | MENIG | MAYIG | DIF | IGUALIGUAL ;
 
-
-// Estructuras de control
-
 ifStmt : IF PA condicion PC instruccion (ELSE instruccion)? ;
-forStmt : FOR PA asignacion condicion PYC asignacion PC instruccion ;
-whileStmt : WHILE PA condicion PC instruccion ;
-breakStmt : BREAK PYC ;
+forStmt : FOR PA declaracion condicion PYC expresion PC instruccion ;
+whileStmt : WHILE PA condicion PC bloque ;
 returnStmt : RETURN expresion PYC;
-

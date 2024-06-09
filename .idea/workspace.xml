@@ -5,64 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d41ec30d-45b0-4932-b5ff-12d225a262e0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/Refactor.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/Refactor.tokens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorBaseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorBaseVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.interp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.tokens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/EscuchaRefactor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/Refactor.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/RefactorApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Contexto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Funcion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Identificador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/TablaSimbolos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/TipoDato.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUno.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUno.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUno.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.interp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoLexer.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/tpuno/TpUnoVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/tpuno/TpUnoVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/entrada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/entrada.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/programa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/programa.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/tpUno.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/tpUno.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/EscuchaTpUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpDos/EscuchaTpUno.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/Escucha.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$AsignacionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$DeclaracionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionesContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$ProgramaContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/AppTpUno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/EscuchaTpUno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$AsignacionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$BreakStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ComparadorContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$CondicionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$DeclaracionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ExpresionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IfStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionesContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IwhileContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ListaIdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ProgramaContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$TipoContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/input/tpUno.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +43,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -93,36 +65,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppTpUno.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.proyectobase [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.proyectobase [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/matias/Documents/universidad/TC/TP1/tecnicasCompilacion/input&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.App.executor": "Run",
+    "Application.AppTpUno.executor": "Run",
+    "Application.RefactorApp.executor": "Run",
+    "Maven.proyectobase [clean].executor": "Run",
+    "Maven.proyectobase [compile].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/matias/Documents/universidad/TC/TP1/tecnicasCompilacion/input",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/input" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/refactor" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tpDos" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.AppTpUno">
+  <component name="RunManager" selected="Application.RefactorApp">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="compiladores.App" />
       <module name="proyectobase" />
@@ -141,7 +121,20 @@
       <module name="proyectobase" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tpuno.*" />
+          <option name="PATTERN" value="tpDos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RefactorApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="refactor.RefactorApp" />
+      <module name="proyectobase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="refactor.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -162,6 +155,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RefactorApp" />
         <item itemvalue="Application.AppTpUno" />
         <item itemvalue="Application.App" />
       </list>
@@ -177,7 +171,15 @@
       <updated>1716513179949</updated>
       <workItem from="1716513181047" duration="1326000" />
       <workItem from="1716514514851" duration="776000" />
-      <workItem from="1716841053810" duration="10340000" />
+      <workItem from="1716841053810" duration="11365000" />
+      <workItem from="1716948516100" duration="1871000" />
+      <workItem from="1717533048795" duration="5300000" />
+      <workItem from="1717550714983" duration="2732000" />
+      <workItem from="1717625055692" duration="1014000" />
+      <workItem from="1717798330358" duration="11680000" />
+      <workItem from="1717884558637" duration="28251000" />
+      <workItem from="1717943769410" duration="11897000" />
+      <workItem from="1717956664319" duration="11382000" />
     </task>
     <servers />
   </component>
@@ -198,6 +200,16 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/refactor/EscuchaRefactor.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/refactor/EscuchaRefactor.java</url>
+          <line>145</line>
+          <option name="timeStamp" value="146" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
