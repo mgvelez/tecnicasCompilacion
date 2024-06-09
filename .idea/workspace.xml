@@ -5,35 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d41ec30d-45b0-4932-b5ff-12d225a262e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/Refactor.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/Refactor.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorBaseVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.interp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorLexer.tokens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gen/refactor/RefactorVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/EscuchaRefactor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/Refactor.g4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/refactor/RefactorApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Contexto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Funcion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Identificador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/TablaSimbolos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/TipoDato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tpDos/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/entrada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/entrada.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/programa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/programa.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/tpUno.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/tpUno.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/AppTpUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/EscuchaTpUno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpDos/EscuchaTpUno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpuno/TpUno.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +151,7 @@
       <workItem from="1717798330358" duration="11680000" />
       <workItem from="1717884558637" duration="28251000" />
       <workItem from="1717943769410" duration="11897000" />
-      <workItem from="1717956664319" duration="11382000" />
+      <workItem from="1717956664319" duration="12256000" />
     </task>
     <servers />
   </component>
