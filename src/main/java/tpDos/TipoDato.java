@@ -5,5 +5,6 @@ public enum TipoDato {
     DOUBLE,
     FLOAT,
     STRING,
-    CHAR;
+    CHAR,
+    VOID;
 }
