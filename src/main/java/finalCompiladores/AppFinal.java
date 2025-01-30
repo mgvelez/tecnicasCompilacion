@@ -4,7 +4,9 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class AppFinal {
 
@@ -51,6 +53,27 @@ public class AppFinal {
                 System.out.println("\n=== No se encontraron errores sintacticos ===");
             }
 
+
+            // 7) Generación de código de 3 direcciones con el Visitor
+            //    (sólo si quieres continuar a pesar de errores)
+            CaminanteFinal visitor = new CaminanteFinal(escuchaFinal.getTablaSimbolos());
+            visitor.visit(tree);
+
+            // Opcional: optimizar código
+            visitor.optimizeCode();
+
+            // Obtener la lista de instrucciones de 3 direcciones
+            List<String> codigo3D = visitor.getThreeAddressCode();
+
+            // Imprimir en consola
+            System.out.println("\n=== Código de Tres Direcciones ===");
+            for (String line : codigo3D) {
+                System.out.println(line);
+            }
+
+            // 8) Generar los archivos de salida
+            generateOutputFiles(escuchaFinal, visitor);
+
             System.out.println("\n=== Proceso de análisis y generación completado ===");
 
         } catch (IOException e) {
@@ -59,4 +82,48 @@ public class AppFinal {
             System.err.println("Error de reconocimiento durante el parseo: " + e.getMessage());
         }
     }
+
+    /**
+     * Genera los archivos de salida:
+     *  1) Tabla de símbolos
+     *  2) Código de tres direcciones
+     *  3) Código optimizado (placeholder)
+     */
+    private static void generateOutputFiles(EscuchaFinal escuchaRefactor, CaminanteFinal visitor) throws IOException {
+        String basePath = "output/";
+
+        // Obtener el código de tres direcciones (antes de optimizar)
+        List<String> original3AC = visitor.getThreeAddressCode();
+
+        // Crear/abrir el archivo de salida "codigo_tres_direcciones.txt"
+        try (FileWriter writer = new FileWriter(basePath + "codigo_tres_direcciones.txt")) {
+            writer.write("Código de Tres Direcciones (Three Address Code)\n");
+            writer.write("----------------------------------------------\n\n");
+
+            // Volcar línea por línea el 3AC
+            for (String line : original3AC) {
+                writer.write(line + "\n");
+            }
+        }
+
+        // Llamar a optimizeCode() para modificar el threeAddressCode
+        visitor.optimizeCode();
+
+        //  Obtener la lista optimizada
+        List<String> optimized3AC = visitor.getThreeAddressCode();
+
+        // Crear/abrir el archivo de salida "codigo_optimizado.txt"
+        try (FileWriter writer = new FileWriter(basePath + "codigo_optimizado.txt")) {
+            writer.write("Optimización de Código Intermedio\n");
+            writer.write("---------------------------------\n\n");
+
+            // Volcar línea por línea el 3AC optimizado
+            for (String line : optimized3AC) {
+                writer.write(line + "\n");
+            }
+        }
+
+        System.out.println("Archivos de salida generados en: " + basePath);
+    }
 }
+
