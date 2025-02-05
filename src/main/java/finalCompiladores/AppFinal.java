@@ -14,7 +14,7 @@ public class AppFinal {
         System.out.println("=== Iniciando análisis ===");
         try {
             // 1) Leer el archivo de entrada
-            CharStream input = CharStreams.fromFileName("input/trabajoFinal.txt");
+            CharStream input = CharStreams.fromFileName("input/ejemploLu.txt");
 
             // 2) Crear el lexer y tokenizar
             TrabajoFinalLexer lexer = new TrabajoFinalLexer(input);
@@ -58,18 +58,22 @@ public class AppFinal {
             //    (sólo si quieres continuar a pesar de errores)
             CaminanteFinal visitor = new CaminanteFinal(escuchaFinal.getTablaSimbolos());
             visitor.visit(tree);
-
-            // Opcional: optimizar código
-            visitor.optimizeCode();
-
-            // Obtener la lista de instrucciones de 3 direcciones
-            List<String> codigo3D = visitor.getThreeAddressCode();
-
-            // Imprimir en consola
-            System.out.println("\n=== Código de Tres Direcciones ===");
-            for (String line : codigo3D) {
+            System.out.println("\n=== Código 3 Direcciones Generado ===");
+            for (String line : visitor.getThreeAddressCode()) {
                 System.out.println(line);
             }
+
+            // Opcional: optimizar código
+//            visitor.optimizeCode();
+
+//            // Obtener la lista de instrucciones de 3 direcciones
+//            List<String> codigo3D = visitor.getThreeAddressCode();
+//
+//            // Imprimir en consola
+//            System.out.println("\n=== Código de Tres Direcciones ===");
+//            for (String line : codigo3D) {
+//                System.out.println(line);
+//            }
 
             // 8) Generar los archivos de salida
             generateOutputFiles(escuchaFinal, visitor);
@@ -92,18 +96,16 @@ public class AppFinal {
     private static void generateOutputFiles(EscuchaFinal escuchaRefactor, CaminanteFinal visitor) throws IOException {
         String basePath = "output/";
 
-        // Obtener el código de tres direcciones (antes de optimizar)
-        List<String> original3AC = visitor.getThreeAddressCode();
-
         // Crear/abrir el archivo de salida "codigo_tres_direcciones.txt"
         try (FileWriter writer = new FileWriter(basePath + "codigo_tres_direcciones.txt")) {
             writer.write("Código de Tres Direcciones (Three Address Code)\n");
             writer.write("----------------------------------------------\n\n");
 
             // Volcar línea por línea el 3AC
-            for (String line : original3AC) {
+            for (String line : visitor.getThreeAddressCode()) {
                 writer.write(line + "\n");
             }
+
         }
 
         // Llamar a optimizeCode() para modificar el threeAddressCode
