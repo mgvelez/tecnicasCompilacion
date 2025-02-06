@@ -3,10 +3,19 @@ package tpDos;
 import java.util.*;
 
 public class TablaSimbolos {
+    private static TablaSimbolos instance;
     private List<Contexto> contextos;
     private int nextContextId = 0;
-    public TablaSimbolos() {
+    private TablaSimbolos() {
         this.contextos = new ArrayList<>();
+    }
+
+    // Singleton pedido por el profe
+    public static synchronized TablaSimbolos getInstance() {
+        if (instance == null) {
+            instance = new TablaSimbolos();
+        }
+        return instance;
     }
 
     /**

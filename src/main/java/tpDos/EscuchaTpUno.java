@@ -13,7 +13,7 @@ public class EscuchaTpUno extends TpUnoBaseListener {
     private TablaSimbolos tablaSimbolos;
 
     public EscuchaTpUno() {
-        this.tablaSimbolos = new TablaSimbolos();
+        this.tablaSimbolos = TablaSimbolos.getInstance();
     }
 
 

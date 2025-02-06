@@ -19,7 +19,7 @@ public class EscuchaRefactor extends RefactorBaseListener {
     private TablaSimbolos tablaSimbolos;
 
     public EscuchaRefactor() {
-        this.tablaSimbolos = new TablaSimbolos();
+        this.tablaSimbolos = TablaSimbolos.getInstance();
     }
 
     @Override

@@ -1,2 +1,14 @@
-target/
+# IntelliJ
 .idea/
+*.iml
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Otros archivos o carpetas sensibles
+.env

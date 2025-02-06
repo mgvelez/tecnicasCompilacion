@@ -1,5 +1,6 @@
 === Contextos Eliminados ===
 Contexto ID=0 (Bloque)
+    global: Variable{nombre='global', tipoDato=INT, inicializada=true, utilizada=false}
 
 Contexto ID=1 (Bloque)
     main: Variable{nombre='main', tipoDato=VOID, inicializada=false, utilizada=true}

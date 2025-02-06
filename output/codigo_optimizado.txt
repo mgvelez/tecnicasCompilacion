@@ -2,6 +2,7 @@ Optimización de Código Intermedio
 ---------------------------------
 
 ; ====== Inicio del programa ======
+global = 5
 ; === Función: main ===
 main:
 ; { Bloque }

@@ -2,6 +2,7 @@ Código de Tres Direcciones (Three Address Code)
 ----------------------------------------------
 
 ; ====== Inicio del programa ======
+global = 5
 ; === Función: main ===
 main:
 ; { Bloque }

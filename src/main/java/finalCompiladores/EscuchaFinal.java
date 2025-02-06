@@ -29,7 +29,7 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
      * un contexto global (índice 0).
      */
     public EscuchaFinal() {
-        this.tablaSimbolos = new TablaSimbolos();
+        this.tablaSimbolos = TablaSimbolos.getInstance();
     }
 
     public TablaSimbolos getTablaSimbolos() {
