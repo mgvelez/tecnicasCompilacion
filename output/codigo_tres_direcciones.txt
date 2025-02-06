@@ -2,58 +2,48 @@ Código de Tres Direcciones (Three Address Code)
 ----------------------------------------------
 
 ; ====== Inicio del programa ======
-global = 10
-; === Función: bar ===
-bar:
-; { Bloque }
-return 5
-; Fin función bar
-; === Función: foo ===
-foo:
-; { Bloque }
-t0 = a + b
-c = t0
-return c
-; Fin función foo
 ; === Función: main ===
 main:
 ; { Bloque }
-x = 10
-z = 0
-t1 = x + 2
-temp = t1
-t2 = temp + 2
-result = t2
-t3 = temp + 2
-result2 = t3
-t4 = arr[0] + 2
-t5 = x + 1
-t6 = llamada a foo(t4, t5)
-y = t6
-t7 = y > 10
-if t7 goto L0
+a = 5
+b = 105
+t0 = a + 2
+c = t0
+t1 = c > b
+if t1 goto L0
 goto L1
 L0:
 ; { Bloque }
-t8 = y * 2
-z = t8
-t9 = z * 2
-z = t9
+t2 = c - 1
+c = t2
 goto L2
 L1:
 ; { Bloque }
-z = 1
+t3 = c + 1
+c = t3
 L2:
+t4 = c > b
+if t4 goto L3
+goto L4
 L3:
-t10 = z < 50
-if t10 goto L4
+; { Bloque }
+t5 = 1 - 1
+c = t5
 goto L5
 L4:
 ; { Bloque }
-t11 = z + 5
-z = t11
-goto L3
+t6 = 2 + 1
+c = t6
 L5:
-return z
+L6:
+t7 = c < 50
+if t7 goto L7
+goto L8
+L7:
+; { Bloque }
+t8 = 1 + 2
+c = t8
+goto L6
+L8:
 ; Fin función main
 ; ====== Fin del programa ======

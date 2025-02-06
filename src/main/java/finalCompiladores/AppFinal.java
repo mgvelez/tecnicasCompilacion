@@ -14,7 +14,7 @@ public class AppFinal {
         System.out.println("=== Iniciando análisis ===");
         try {
             // 1) Leer el archivo de entrada
-            CharStream input = CharStreams.fromFileName("input/ejemploCompleto.txt");
+            CharStream input = CharStreams.fromFileName("input/entrada.txt");
 
             // 2) Crear el lexer y tokenizar
             TrabajoFinalLexer lexer = new TrabajoFinalLexer(input);
@@ -111,7 +111,7 @@ public class AppFinal {
         visitor.optimizeCode();
 
         //  Obtener la lista optimizada
-        List<String> optimized3AC = visitor.getThreeAddressCodeOptimizado();
+        List<String> optimized3AC = visitor.getThreeAddressCode();
 
         // Crear/abrir el archivo de salida "codigo_optimizado.txt"
         try (FileWriter writer = new FileWriter(basePath + "codigo_optimizado.txt")) {
@@ -120,6 +120,23 @@ public class AppFinal {
 
             // Volcar línea por línea el 3AC optimizado
             for (String line : optimized3AC) {
+                writer.write(line + "\n");
+            }
+        }
+
+        // Llamar a optimizeCode() para modificar el threeAddressCode
+        visitor.optimizeCodeV2();
+
+        //  Obtener la lista optimizada
+        List<String> optimized3ACv2 = visitor.getThreeAddressCodeOptimizado();
+
+        // Crear/abrir el archivo de salida "codigo_optimizado.txt"
+        try (FileWriter writer = new FileWriter(basePath + "codigo_optimizado_v2.txt")) {
+            writer.write("Optimización de Código Intermedio v2\n");
+            writer.write("---------------------------------\n\n");
+
+            // Volcar línea por línea el 3AC optimizado
+            for (String line : optimized3ACv2) {
                 writer.write(line + "\n");
             }
         }

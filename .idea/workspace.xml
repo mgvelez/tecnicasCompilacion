@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d41ec30d-45b0-4932-b5ff-12d225a262e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/input/ejemploCompleto.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/ejemploCorto.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/input/explicacionesTXT" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/output/codigo_optimizado.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output/codigo_optimizado_v2.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/output/codigo_tres_direcciones.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/output/optimizacionLULU" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/output/tabla_simbolos.txt" afterDir="false" />
@@ -22,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/finalCompiladores/TrabajoFinalVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/ejemploCompleto.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/ejemploCompleto.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/trabajoFinal.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/trabajoFinal.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/finalCompiladores/AppFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalCompiladores/AppFinal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/finalCompiladores/CaminanteFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalCompiladores/CaminanteFinal.java" afterDir="false" />
@@ -29,94 +29,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/finalCompiladores/TrabajoFinal.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/finalCompiladores/TrabajoFinal.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tpDos/Contexto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpDos/Contexto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tpDos/TablaSimbolos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tpDos/TablaSimbolos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/Escucha.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladores.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$AsignacionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$DeclaracionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$InstruccionesContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser$ProgramaContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiladores/compiladoresVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/EscuchaRefactor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/Refactor.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/Refactor.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$AsignacionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$BloqueContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ComparadorContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$CondicionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$DeclaracionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$EstructuraControlContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ExpresionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ForStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$IdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$IfStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$IncrementoContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$InstruccionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$InstruccionesContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ListaIdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ProgramaContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$ProgramaMainContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$TipoDatoContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser$WhileStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/refactor/RefactorVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/Contexto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/EscuchaTpUno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/Funcion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/Identificador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/TablaSimbolos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/TipoDato.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/Variable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/AppTpUno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUno.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoLexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$AsignacionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$BloqueContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$BreakStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ComparadorContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$CondicionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$DeclaracionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$DeclaracionGlobalContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$EstructuraControlContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ExpresionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ForStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$FuncionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$IfStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$InstruccionesContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ListaIdentContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$LlamadaFuncionContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ParametroContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ParametrosContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ProgramaContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$ReturnStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$TipoContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser$WhileStmtContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tpuno/TpUnoVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/Contexto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tpDos/Contexto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/TablaSimbolos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tpDos/TablaSimbolos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tpDos/TipoDato.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tpDos/TipoDato.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,37 +66,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.App.executor": "Run",
-    "Application.AppFinal.executor": "Run",
-    "Application.AppTpUno.executor": "Run",
-    "Application.RefactorApp.executor": "Run",
-    "Maven.proyectobase [clean].executor": "Run",
-    "Maven.proyectobase [compile].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/pom.xml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "two.files.diff.last.used.file": "/Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/output/codigo_optimizado.txt",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppFinal.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppTpUno.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RefactorApp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyectobase [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyectobase [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/pom.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;/Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/output/codigo_optimizado.txt&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/input" />
@@ -276,7 +191,7 @@
       <workItem from="1717956664319" duration="12256000" />
       <workItem from="1738709361200" duration="9696000" />
       <workItem from="1738723396040" duration="2803000" />
-      <workItem from="1738800859563" duration="3360000" />
+      <workItem from="1738800859563" duration="4654000" />
     </task>
     <servers />
   </component>
@@ -314,7 +229,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/finalCompiladores/CaminanteFinal.java</url>
-          <line>111</line>
+          <line>113</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -324,13 +239,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/finalCompiladores/AppFinal.java</url>
-          <line>126</line>
+          <line>143</line>
           <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/finalCompiladores/CaminanteFinal.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

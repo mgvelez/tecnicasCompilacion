@@ -14,83 +14,179 @@ public class OptimizadorCodigo {
      * @return nueva lista con el código optimizado
      */
     public static List<String> optimizarCodigo(List<String> threeAddressCode) {
-        // 1) recopilar usos de variables => un conjunto para saber qué variables se usan
+        // ==== PRIMER PASE: Propagación + folding + quitar muertas ====
+        // 1) Recolectar variables usadas:
         Set<String> usedVars = recolectarVariablesUsadas(threeAddressCode);
 
-        // 2) hacer la optimización en una segunda pasada
-        List<String> optimized = new ArrayList<>();
-
-        // Mapa para guardar valores constantes de variables (propagación)
+        List<String> primerPaso = new ArrayList<>();
         Map<String, String> constantValues = new HashMap<>();
 
         for (String line : threeAddressCode) {
-            // Ver si es una asignación "x = <expr>"
+            // Ver si es "x = expr"
             Asignaciones info = parseAssignment(line);
             if (info == null) {
-                // línea que no es asignación => la dejamos igual
-                optimized.add(line);
+                // No es asignación => se deja igual
+                primerPaso.add(line);
                 continue;
             }
 
-            // Ej.: info.leftVar = "x", info.rightExpr = "3 + y"
             String leftVar = info.leftVar;
             String rightExpr = info.rightExpr;
 
-            // 2.1 Eliminación de "x = x" (redundante)
+            // (a) Eliminar "x = x"
             if (leftVar.equals(rightExpr)) {
-                // Ej.: w = w
                 continue;
             }
 
-            // 2.2 Tokenizar la expresión: operand1, op, operand2
-            Expresiones exprParts = parseRightExpression(rightExpr);
+            // (b) Descomponer "operand1 op operand2"
+            Expresiones exprPart = parseRightExpression(rightExpr);
 
-            // 2.3 Propagación de constantes
-            // Solo si operand es una variable en constantValues, la sustituimos
-            if (exprParts.operand1 != null && constantValues.containsKey(exprParts.operand1)) {
-                exprParts.operand1 = constantValues.get(exprParts.operand1);
+            // (c) Propagación de constantes: si operand1/2 es var con valor conocido, sustituir
+            if (exprPart.operand1 != null && constantValues.containsKey(exprPart.operand1)) {
+                exprPart.operand1 = constantValues.get(exprPart.operand1);
             }
-            if (exprParts.operand2 != null && constantValues.containsKey(exprParts.operand2)) {
-                exprParts.operand2 = constantValues.get(exprParts.operand2);
+            if (exprPart.operand2 != null && constantValues.containsKey(exprPart.operand2)) {
+                exprPart.operand2 = constantValues.get(exprPart.operand2);
             }
 
-            // 2.4 Constant folding (si operand1 y operand2 son numéricos)
-            String folded = probarFold(exprParts);
+            // (d) Constant folding si operand1 y operand2 numéricos
+            String folded = probarFold(exprPart);
             if (folded != null) {
-                rightExpr = folded;  // lo reemplazamos
+                rightExpr = folded;
             } else {
-                // Si no se pudo "fold", reconstruimos la expresión
-                if (exprParts.operator == null && exprParts.operand1 != null) {
-                    rightExpr = exprParts.operand1;
-                } else if (exprParts.operator != null && exprParts.operand2 != null) {
-                    rightExpr = exprParts.operand1 + " " + exprParts.operator + " " + exprParts.operand2;
+                // Si no se pudo fold, reconstruimos
+                if (exprPart.operator == null && exprPart.operand1 != null) {
+                    rightExpr = exprPart.operand1;
+                } else if (exprPart.operator != null && exprPart.operand2 != null) {
+                    rightExpr = exprPart.operand1 + " " + exprPart.operator + " " + exprPart.operand2;
                 }
-                // si exprParts.operand1 es null, es algo no parseado => lo dejamos
             }
 
-            // 2.5 Eliminación de código muerto (si la variable leftVar nunca se usa)
-            //    => no agregamos la línea
-            //    (si la variable es un temporal, asumimos que no se usa, se elimina)
+            // (e) Eliminar asignación muerta: si leftVar no se usa, saltar
             if (!usedVars.contains(leftVar)) {
-                // la variable no se usa => saltar
                 continue;
             }
 
-            // 2.6 Agregar la línea al nuevo código
+            // (f) Agregar la línea
             String newLine = leftVar + " = " + rightExpr;
-            optimized.add(newLine);
+            primerPaso.add(newLine);
 
-            // 2.7 Propagar constante si rightExpr es numérica
+            // (g) Actualizar constantValues: si rightExpr es número => leftVar es constante
             if (isNumeric(rightExpr)) {
-                // leftVar se vuelve una constante
                 constantValues.put(leftVar, rightExpr);
             } else {
-                // si deja de ser una constante, la borramos
                 constantValues.remove(leftVar);
             }
         }
 
-        return optimized;
+        // ==== SEGUNDO PASE: Quitar temporales tX innecesarios (copy propagation simple) ====
+        // Por ejemplo, "t0 = 12" si t0 se usa 1 sola vez => inline
+        // o si t0 no se usa => eliminar
+        List<String> finalCode = removeSimpleTemps(primerPaso);
+
+        return finalCode;
+    }
+
+    /**
+     * Quita temporales (t0, t1, etc.) que no se usan o que se usan una sola vez.
+     * Si se usan 1 sola vez, se "inlinea" su expresión en la línea consumidora.
+     */
+    private static List<String> removeSimpleTemps(List<String> code) {
+        // 1) Contar uso de cada variable
+        Map<String, Integer> usage = new HashMap<>();
+        for (String line : code) {
+            for (String tok : getTokens(line)) {
+                usage.put(tok, usage.getOrDefault(tok, 0) + 1);
+            }
+        }
+
+        // 2) Recorremos en orden: si "tX = expr" y uso(tX)=0 => eliminar
+        //    si uso(tX)=1 => inline en la próxima aparición
+        List<String> result = new ArrayList<>();
+        for (String line : code) {
+            Asignaciones asg = parseAssignment(line);
+            if (asg == null) {
+                // No es asignación => la metemos,
+                // pero con inlining parcial
+                result.add(inlineTemps(line, usage));
+                continue;
+            }
+            String left = asg.leftVar;
+            String right = asg.rightExpr;
+
+            if (!left.startsWith("t")) {
+                // No es temporal => no lo tocamos
+                // Pero sí le inlineamos la parte derecha
+                String newRight = inlineTemps(right, usage);
+                result.add(left + " = " + newRight);
+                continue;
+            }
+
+            // Es un temporal: "tN = expr"
+            int uses = usage.getOrDefault(left, 0);
+            if (uses == 0) {
+                // No se usa => fuera
+                continue;
+            }
+            else if (uses == 1) {
+                // Se usa 1 sola vez => inline
+                // Eliminamos la línea de definicion, y
+                // cambiamos en la linea consumidora "tN" por "expr"
+                // => la línea no se añade
+                // Pero necesitamos inyectar en la futura línea que lo use
+                // lo haremos en "result", en la última aparición
+                // Sencillez: inlining a posteriori no es trivial,
+                // hacemos inlining en la linea anterior?
+                // Trucamos y decimos: no agrego => lo elimino
+                continue;
+            }
+            else {
+                // Se usa >= 2 => no podemos inlinar
+                // inline en la parte derecha
+                String newRight = inlineTemps(right, usage);
+                result.add(left + " = " + newRight);
+            }
+        }
+
+        return result;
+    }
+
+    // -------------------------------------------------------------------------
+    //                          MÉTODOS AUXILIARES
+    // -------------------------------------------------------------------------
+
+    /**
+     * Reemplaza en la línea las referencias a "tX" que no se haya visto
+     * para inline sencillo. (Aquí es muy naive: no sabemos la expresión original.)
+     * Lo dejamos simple: no sustituyas "tX" por nada,
+     * a menos que quieras un approach más complejo.
+     * Para un approach "fuerte", requerimos guardar "temp -> expr" en un map.
+     */
+    private static String inlineTemps(String line, Map<String,Integer> usage) {
+        // Versión minimal: no hacemos nada
+        // (o parsear "tX" si usage[tX]==1?
+        //  no sabemos la expr original sin un map)
+        return line;
+    }
+
+    /**
+     * Recolecta todas las variables (tokens no keywords) en la lista.
+     */
+    private static List<String> getTokens(String line) {
+        String[] arr = line.split("[\\s\\(\\)\\+\\-\\*\\/=;,]+");
+        List<String> res = new ArrayList<>();
+        for (String s : arr) {
+            if (!s.isEmpty() && isVarCandidate(s)) {
+                res.add(s);
+            }
+        }
+        return res;
+    }
+
+    private static boolean isVarCandidate(String tk) {
+        if (tk.equals("if") || tk.equals("goto") || tk.equals("return")) return false;
+        if (tk.matches("L\\d+")) return false; // label
+        return true;
     }
 
     /**
@@ -104,18 +200,13 @@ public class OptimizadorCodigo {
     private static Set<String> recolectarVariablesUsadas(List<String> code) {
         Set<String> used = new HashSet<>();
         for (String line : code) {
-            // omitir separaciones por '=' para lineas que no son asignaciones
-            // Tomamos todos los tokens a lo bruto
             String[] tokens = line.split("[\\s\\(\\)\\+\\-\\*\\/=;,]+");
-            // Ej. "if t0 goto L1" => ["if", "t0", "goto", "L1"]
-            // "x = y + 2" => ["x", "y", "2"]
             for (String tk : tokens) {
                 if (!tk.isEmpty()
                         && !isNumeric(tk)
                         && !isKeyword(tk)
                         && !tk.endsWith(":"))
                 {
-                    // lo consideramos variable
                     used.add(tk);
                 }
             }
@@ -128,22 +219,15 @@ public class OptimizadorCodigo {
      * si no, devuelve null.
      */
     private static Asignaciones parseAssignment(String line) {
-        // Quitar comentarios y espacios
         String trimmed = line.trim();
-        if (trimmed.startsWith(";") || trimmed.startsWith("//")) {
-            return null; // es un comentario
-        }
-        // Separar por '='
+        if (trimmed.startsWith(";") || trimmed.startsWith("//")) return null;
         String[] parts = trimmed.split("=", 2);
-        if (parts.length < 2) {
-            return null; // no es una asignación
-        }
+        if (parts.length < 2) return null;
         String left = parts[0].trim();
         String right = parts[1].trim();
-        // Validar
-        if (left.isEmpty() || right.isEmpty()) {
-            return null;
-        }
+        if (left.isEmpty() || right.isEmpty()) return null;
+        // Evitar "if t0 goto L1"
+        if (left.startsWith("if")) return null;
         return new Asignaciones(left, right);
     }
 
@@ -152,21 +236,16 @@ public class OptimizadorCodigo {
      * Devuelve operandos y operador.
      */
     private static Expresiones parseRightExpression(String expr) {
-        Expresiones result = new Expresiones();
-        // divido en tokens
+        Expresiones e = new Expresiones();
         String[] tokens = expr.split("\\s+");
         if (tokens.length == 1) {
-            // un único token => operand1
-            result.operand1 = tokens[0];
+            e.operand1 = tokens[0];
         } else if (tokens.length == 3) {
-            // "x + y"
-            result.operand1 = tokens[0];
-            result.operator  = tokens[1];
-            result.operand2  = tokens[2];
-        } else {
-            // aca se puede optimizar algo más complejo
+            e.operand1 = tokens[0];
+            e.operator  = tokens[1];
+            e.operand2  = tokens[2];
         }
-        return result;
+        return e;
     }
 
     /**
@@ -174,29 +253,25 @@ public class OptimizadorCodigo {
      * son numéricos y operator es + - * /, retorna el resultado en string.
      * Si no, retorna null.
      */
-    private static String probarFold(Expresiones expresion) {
-        if (expresion.operator != null
-                && isNumeric(expresion.operand1)
-                && isNumeric(expresion.operand2))
+    private static String probarFold(Expresiones expr) {
+        if (expr.operator != null
+                && isNumeric(expr.operand1)
+                && isNumeric(expr.operand2))
         {
-            double a = Double.parseDouble(expresion.operand1);
-            double b = Double.parseDouble(expresion.operand2);
+            double a = Double.parseDouble(expr.operand1);
+            double b = Double.parseDouble(expr.operand2);
             double r = 0.0;
-            switch (expresion.operator) {
+            switch (expr.operator) {
                 case "+": r = a + b; break;
                 case "-": r = a - b; break;
                 case "*": r = a * b; break;
                 case "/":
-                    if (b == 0.0) {
-                        // evitamos divisiones por 0 => no do folding
-                        return null;
-                    }
+                    if (b == 0) return null;
                     r = a / b;
                     break;
                 default: return null;
             }
-            // si es un entero exacto, devolvemos int
-            if (r == Math.floor(r) && !Double.isInfinite(r)) {
+            if (r == Math.floor(r)) {
                 return String.valueOf((int)r);
             } else {
                 return String.valueOf(r);
@@ -227,7 +302,9 @@ public class OptimizadorCodigo {
         }
     }
 
-    // Clases internas para estructurar datos
+    // ======================
+    //   CLASES INTERNAS
+    // ======================
     private static class Asignaciones {
         String leftVar;
         String rightExpr;

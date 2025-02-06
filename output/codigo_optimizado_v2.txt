@@ -1,0 +1,40 @@
+Optimización de Código Intermedio v2
+---------------------------------
+
+; ====== Inicio del programa ======
+; === Función: main ===
+main:
+; { Bloque }
+a = 5
+b = 105
+c = 7
+if t1 goto L0
+goto L1
+L0:
+; { Bloque }
+c = 6
+goto L2
+L1:
+; { Bloque }
+c = 7
+L2:
+if t4 goto L3
+goto L4
+L3:
+; { Bloque }
+c = 0
+goto L5
+L4:
+; { Bloque }
+c = 3
+L5:
+L6:
+if t7 goto L7
+goto L8
+L7:
+; { Bloque }
+c = 3
+goto L6
+L8:
+; Fin función main
+; ====== Fin del programa ======
