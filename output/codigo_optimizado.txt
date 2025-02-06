@@ -1,0 +1,59 @@
+Optimización de Código Intermedio
+---------------------------------
+
+; ====== Inicio del programa ======
+global = 10
+; === Función: bar ===
+bar:
+; { Bloque }
+return 5
+; Fin función bar
+; === Función: foo ===
+foo:
+; { Bloque }
+t0 = a + b
+c = t0
+return c
+; Fin función foo
+; === Función: main ===
+main:
+; { Bloque }
+x = 10
+z = 0
+t1 = 12
+temp = 12
+t2 = 14
+result = 14
+t3 = 14
+result2 = 14
+t4 = arr[0] + 2
+t5 = 11
+t6 = llamada a foo(t4, t5)
+y = t6
+t7 = y > 10
+if t7 goto L0
+goto L1
+L0:
+; { Bloque }
+t8 = y * 2
+z = t8
+t9 = z * 2
+z = t9
+goto L2
+L1:
+; { Bloque }
+z = 1
+L2:
+L3:
+t10 = 1 < 50
+if t10 goto L4
+goto L5
+L4:
+; { Bloque }
+t11 = 6
+z = 6
+goto L3
+L5:
+return z
+; Fin función main
+; ====== Fin del programa ======

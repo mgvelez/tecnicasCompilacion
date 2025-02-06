@@ -1,0 +1,11 @@
+Constant folding (a veces llamado simplemente fold) es una optimización que hace el compilador cuando ve operaciones entre constantes que se pueden resolver de una vez, sin esperar a que el programa se ejecute. Por ejemplo:
+
+Si en el código tienes 3 + 4, el compilador se da cuenta de que el resultado es 7 y reemplaza esa expresión por 7 directamente.
+Si ve 2 * 5, lo convierte en 10.
+Si hay algo como 10 / 2, lo deja en 5.
+De esta manera, el compilador “reduce” operaciones que no necesitan esperar a tiempo de ejecución, y así tu programa va más rápido al no tener que recalcular lo que ya se sabe que es un número fijo.
+
+Es básicamente el compilador haciendo de “calculadora” antes de que el programa corra. Ese “doblar” (fold) las expresiones numéricas en un único valor se llama constant folding.
+
+
+optimizador no hizo un análisis de flujos con “join” (unir caminos if/else), puede creer erróneamente que z=1

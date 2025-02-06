@@ -14,7 +14,7 @@ public class AppFinal {
         System.out.println("=== Iniciando análisis ===");
         try {
             // 1) Leer el archivo de entrada
-            CharStream input = CharStreams.fromFileName("input/entrada.txt");
+            CharStream input = CharStreams.fromFileName("input/ejemploCompleto.txt");
 
             // 2) Crear el lexer y tokenizar
             TrabajoFinalLexer lexer = new TrabajoFinalLexer(input);
@@ -55,8 +55,7 @@ public class AppFinal {
 
 
             // 7) Generación de código de 3 direcciones con el Visitor
-            //    (sólo si quieres continuar a pesar de errores)
-            CaminanteFinal visitor = new CaminanteFinal(escuchaFinal.getTablaSimbolos());
+            CaminanteFinal visitor = new CaminanteFinal();
             visitor.visit(tree);
             System.out.println("\n=== Código 3 Direcciones Generado ===");
             for (String line : visitor.getThreeAddressCode()) {
@@ -76,7 +75,7 @@ public class AppFinal {
 //            }
 
             // 8) Generar los archivos de salida
-            generateOutputFiles(escuchaFinal, visitor);
+            generateOutputFiles(visitor);
 
             System.out.println("\n=== Proceso de análisis y generación completado ===");
 
@@ -93,7 +92,7 @@ public class AppFinal {
      *  2) Código de tres direcciones
      *  3) Código optimizado (placeholder)
      */
-    private static void generateOutputFiles(EscuchaFinal escuchaRefactor, CaminanteFinal visitor) throws IOException {
+    private static void generateOutputFiles(CaminanteFinal visitor) throws IOException {
         String basePath = "output/";
 
         // Crear/abrir el archivo de salida "codigo_tres_direcciones.txt"
@@ -112,7 +111,7 @@ public class AppFinal {
         visitor.optimizeCode();
 
         //  Obtener la lista optimizada
-        List<String> optimized3AC = visitor.getThreeAddressCode();
+        List<String> optimized3AC = visitor.getThreeAddressCodeOptimizado();
 
         // Crear/abrir el archivo de salida "codigo_optimizado.txt"
         try (FileWriter writer = new FileWriter(basePath + "codigo_optimizado.txt")) {

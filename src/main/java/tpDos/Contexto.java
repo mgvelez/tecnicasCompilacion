@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Contexto {
+    private int id;
+    private String contextType;
+
+    public Contexto(int id) {
+        this.id = id;
+        this.contextType = "Bloque";
+    }
     private Map<String, Identificador> identificadores = new HashMap<>();
 
     /**
@@ -30,6 +37,22 @@ public class Contexto {
      */
     public Map<String, Identificador> getIdentificadores() {
         return identificadores;
+    }
+    public int getId() {
+        return this.id;
+    }
+
+    public String getContextType() {
+        return contextType;
+    }
+
+    public void setContextType(String contextType) {
+        this.contextType = contextType;
+    }
+
+    @Override
+    public String toString() {
+        return "Contexto #" + id + " con " + identificadores.size() + " identificadores";
     }
 
 

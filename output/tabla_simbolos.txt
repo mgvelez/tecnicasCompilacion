@@ -1,0 +1,37 @@
+=== Contextos Eliminados ===
+Contexto ID=0 (Bloque)
+    global: Variable{nombre='global', tipoDato=INT, inicializada=true, utilizada=false}
+
+Contexto ID=1 (Bloque)
+    bar: Variable{nombre='bar', tipoDato=INT, inicializada=false, utilizada=true}
+
+Contexto ID=2 (Cuerpo funcion: bar)
+
+Contexto ID=3 (Bloque)
+    a: Variable{nombre='a', tipoDato=INT, inicializada=true, utilizada=true}
+    b: Variable{nombre='b', tipoDato=INT, inicializada=true, utilizada=true}
+    foo: Variable{nombre='foo', tipoDato=INT, inicializada=false, utilizada=true}
+
+Contexto ID=4 (Cuerpo funcion: foo)
+    c: Variable{nombre='c', tipoDato=INT, inicializada=true, utilizada=true}
+
+Contexto ID=5 (Bloque)
+    main: Variable{nombre='main', tipoDato=VOID, inicializada=false, utilizada=true}
+
+Contexto ID=6 (Cuerpo funcion: main)
+    arr: Variable{nombre='arr', tipoDato=INT, inicializada=true, utilizada=false}
+    result: Variable{nombre='result', tipoDato=INT, inicializada=true, utilizada=false}
+    temp: Variable{nombre='temp', tipoDato=INT, inicializada=true, utilizada=true}
+    x: Variable{nombre='x', tipoDato=INT, inicializada=true, utilizada=true}
+    y: Variable{nombre='y', tipoDato=INT, inicializada=true, utilizada=true}
+    i: Variable{nombre='i', tipoDato=INT, inicializada=false, utilizada=false}
+    z: Variable{nombre='z', tipoDato=INT, inicializada=true, utilizada=true}
+    result2: Variable{nombre='result2', tipoDato=INT, inicializada=true, utilizada=false}
+
+Contexto ID=7 (Bloque IF:)
+
+Contexto ID=8 (Bloque IF:)
+
+Contexto ID=9 (Bloque WHILE)
+
+================================

@@ -1,4 +1,6 @@
 // Función declarada, pero NO utilizada
+int global = 10;
+
 int bar() {
     return 5;
 }
@@ -9,30 +11,32 @@ int foo(int a, int b) {
     return c;
 }
 
-int main() {
+void main() {
     int x = 10;
     int y;
     int z = 0;
-    int i; // Declarado, pero NO usado
+    int i;             // Declarado, pero NO usado
+    int arr[3] = {1, 2, 3};
 
     // Pequeña secuencia para ver propagación de constantes/repetición
     int temp = x + 2;       // temp = 12
     int result = temp + 2;  // result = 14
     int result2 = temp + 2; // result2 = 14 (repetición de temp+2)
 
-    // Llamado a función sin arreglos
-    y = foo((x + 2), (x + 1)); // foo(10+2, 10+1) => foo(12, 11)
+    // Llamado a función con paréntesis anidados
+    y = foo((arr[0] + 2), (x + 1)); // foo(1+2, 10+1) => foo(3, 11)
 
-    // Estructura if-else optimizada
+    // Estructura if-else con llaves
     if (y > 10) {
-        z = y * 4;  // z = (y * 2) * 2
+        z = y * 2;
+        z = z * 2;   // Operación repetida: z = (y*2)*2
     } else {
         z = 1;
     }
 
     // Ciclo while para verificar llaves y control de flujo
     while (z < 50) {
-        z += 5;
+        z = z + 5;
     }
 
     return z;

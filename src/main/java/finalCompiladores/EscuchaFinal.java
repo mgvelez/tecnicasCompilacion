@@ -1,5 +1,6 @@
 package finalCompiladores;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import tpDos.*;
@@ -8,10 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class EscuchaFinal extends TrabajoFinalBaseListener {
     private TablaSimbolos tablaSimbolos;
@@ -22,8 +20,9 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
 
     // Pila de brackets para '{', '(', '[' etc.
     private Stack<LlavesItem> bracketStack = new Stack<>();
-    private List<String> threeAddressCode = new ArrayList<>(); // Para el código de tres direcciones
     private List<Contexto> contextosEliminados = new ArrayList<>();
+    private boolean nextBloqueEsCuerpoFuncion = false;
+
 
     /**
      * Constructor: creamos la tabla de símbolos e iniciamos
@@ -31,8 +30,6 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
      */
     public EscuchaFinal() {
         this.tablaSimbolos = new TablaSimbolos();
-        // Creamos un contexto global para todo el programa
-        this.tablaSimbolos.addContexto();
     }
 
     public TablaSimbolos getTablaSimbolos() {
@@ -45,6 +42,16 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
 
     public String getErrorSintactico() {
         return errorSintactico.toString();
+    }
+
+    /**
+     * Control balance de llaves, corchetes y paréntesis.
+     */
+    @Override
+    public void enterPrograma(TrabajoFinalParser.ProgramaContext ctx) {
+        // Creamos un contexto global para todo el programa
+        this.tablaSimbolos.addContexto();
+
     }
 
     // -------------------------------------------------------------------------
@@ -63,7 +70,10 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
                     .append("' abierto en la línea ")
                     .append(leftover.getLinea()).append("\n");
         }
-
+        checkUnusedSymbols(tablaSimbolos.getContextoActual());
+        Contexto global = tablaSimbolos.getContextoActual();
+        contextosEliminados.add(global);
+        tablaSimbolos.delContexto();
         // Escribimos la tabla de símbolos a partir de los contextos eliminados (tiene error)
         escribirContextosEliminadosEnArchivo("output/tabla_simbolos.txt");
     }
@@ -77,8 +87,10 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
      */
     @Override
     public void enterBloque(TrabajoFinalParser.BloqueContext ctx) {
-        // Abre contexto
         tablaSimbolos.addContexto();
+        Contexto currentCtx = tablaSimbolos.getContextoActual();
+        String blockType = determinarTipoBloque(ctx);
+        currentCtx.setContextType(blockType);
     }
 
     /**
@@ -170,7 +182,6 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
     @Override
     public void enterFuncion(TrabajoFinalParser.FuncionContext ctx) {
         tablaSimbolos.addContexto();
-
         // Nombre y tipo
         String funcName = ctx.ID().getText();
         String tipoFuncStr = ctx.tipoDato().getText().toUpperCase();
@@ -459,27 +470,72 @@ public class EscuchaFinal extends TrabajoFinalBaseListener {
     private void escribirContextosEliminadosEnArchivo(String nombreArchivo) {
         File directorio = new File("output/");
         if (!directorio.exists()) {
-            boolean creado = directorio.mkdirs();
-            if (!creado) {
+            if (!directorio.mkdirs()) {
                 System.err.println("Error: No se pudo crear el directorio 'output/'.");
                 return;
             }
         }
 
+        // Clono
+        List<Contexto> sortedList = new ArrayList<>(contextosEliminados);
+
+        // 2) Ordeno
+        sortedList.sort(Comparator.comparingInt(Contexto::getId));
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
             writer.write("=== Contextos Eliminados ===\n");
-            for (int i = 0; i < contextosEliminados.size(); i++) {
-                writer.write("Contexto " + i + ":\n");
-                Contexto contexto = contextosEliminados.get(i);
-                Map<String, Identificador> identificadores = contexto.getIdentificadores();
-                for (Map.Entry<String, Identificador> entry : identificadores.entrySet()) {
-                    writer.write("\t" + entry.getKey() + ": " + entry.getValue().toString() + "\n");
+
+            // 3) Imprimir en orden
+            for (Contexto contexto : sortedList) {
+                writer.write("Contexto ID=" + contexto.getId()
+                        + " (" + contexto.getContextType() + ")\n");
+
+                for (Map.Entry<String, Identificador> e : contexto.getIdentificadores().entrySet()) {
+                    writer.write("    " + e.getKey() + ": " + e.getValue() + "\n");
                 }
+                writer.write("\n");
             }
-            writer.write("=============================\n");
+            writer.write("================================\n");
             System.out.println("Contextos eliminados escritos exitosamente en " + nombreArchivo);
+
         } catch (IOException e) {
             System.err.println("Error al escribir los contextos eliminados en el archivo: " + e.getMessage());
         }
+    }
+
+    private String determinarTipoBloque(TrabajoFinalParser.BloqueContext ctx) {
+
+        ParserRuleContext current = ctx.getParent();
+
+        while (current != null) {
+            // 1) ¿Es una función?
+            if (current instanceof TrabajoFinalParser.FuncionContext) {
+                // nombre de la función
+                TrabajoFinalParser.FuncionContext fctx = (TrabajoFinalParser.FuncionContext) current;
+                String funcName = fctx.ID().getText();
+                return "Cuerpo funcion: " + funcName;
+            }
+
+            // 2) ¿Es un if?
+            if (current instanceof TrabajoFinalParser.IfStmtContext) {
+                return "Bloque IF:";
+            }
+
+            // 3) ¿Es un for?
+            if (current instanceof TrabajoFinalParser.ForStmtContext) {
+                return "Bloque FOR";
+            }
+
+            // 4) ¿Es un while?
+            if (current instanceof TrabajoFinalParser.WhileStmtContext) {
+                return "Bloque WHILE";
+            }
+
+            // 5) Si no es ninguna de las anteriores, subimos un nivel
+            current = current.getParent();
+        }
+
+        // Si nunca encontramos un if/for/while/funcion, es un bloque genérico
+        return "Bloque x";
     }
 }

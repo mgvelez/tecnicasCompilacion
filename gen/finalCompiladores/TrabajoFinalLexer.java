@@ -1,4 +1,4 @@
-// Generated from D:/UNI/9° SEMESTRE/TC/finalTc/v1/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
+// Generated from /Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
 package finalCompiladores;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

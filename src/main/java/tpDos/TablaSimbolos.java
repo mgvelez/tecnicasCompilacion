@@ -4,6 +4,7 @@ import java.util.*;
 
 public class TablaSimbolos {
     private List<Contexto> contextos;
+    private int nextContextId = 0;
     public TablaSimbolos() {
         this.contextos = new ArrayList<>();
     }
@@ -12,7 +13,9 @@ public class TablaSimbolos {
      * Añade un nuevo contexto al tope de la pila de contextos.
      */
     public void addContexto() {
-        contextos.add(new Contexto());
+        Contexto nuevo = new Contexto(nextContextId);
+        nextContextId++;
+        contextos.add(nuevo);
     }
 
     /**
@@ -79,19 +82,12 @@ public class TablaSimbolos {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("=== Tabla de Símbolos ===\n");
-        for (int i = 0; i < contextos.size(); i++) {
-            sb.append("Contexto ").append(i).append(":\n");
-            Map<String, Identificador> identificadores = contextos.get(i).getIdentificadores();
-            if (identificadores.isEmpty()) {
-                sb.append("\tVacio\n");
-            } else {
-                for (Map.Entry<String, Identificador> entry : identificadores.entrySet()) {
-                    sb.append("\t").append(entry.getKey())
-                            .append(": ")
-                            .append(entry.getValue())
-                            .append("\n");
-                }
-            }
+        for (Contexto c : contextos) {
+            sb.append("Contexto ID=")
+                    .append(c.getId())
+                    .append(": ")
+                    .append(c.getIdentificadores().keySet())
+                    .append("\n");
         }
         sb.append("========================\n");
         return sb.toString();

@@ -1,4 +1,4 @@
-// Generated from D:/UNI/9° SEMESTRE/TC/finalTc/v1/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
+// Generated from /Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
 package finalCompiladores;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -103,6 +103,13 @@ public class TrabajoFinalBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitAccessArray(TrabajoFinalParser.AccessArrayContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitInicializacionArreglo(TrabajoFinalParser.InicializacionArregloContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

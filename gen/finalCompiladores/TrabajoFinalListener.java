@@ -1,4 +1,4 @@
-// Generated from D:/UNI/9° SEMESTRE/TC/finalTc/v1/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
+// Generated from /Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
 package finalCompiladores;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -137,6 +137,16 @@ public interface TrabajoFinalListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAccessArray(TrabajoFinalParser.AccessArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link TrabajoFinalParser#inicializacionArreglo}.
+	 * @param ctx the parse tree
+	 */
+	void enterInicializacionArreglo(TrabajoFinalParser.InicializacionArregloContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link TrabajoFinalParser#inicializacionArreglo}.
+	 * @param ctx the parse tree
+	 */
+	void exitInicializacionArreglo(TrabajoFinalParser.InicializacionArregloContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link TrabajoFinalParser#asignacion}.
 	 * @param ctx the parse tree

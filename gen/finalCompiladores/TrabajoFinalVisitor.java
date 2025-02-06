@@ -1,4 +1,4 @@
-// Generated from D:/UNI/9° SEMESTRE/TC/finalTc/v1/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
+// Generated from /Users/matias/Documents/universidad/TC/FINAL/tecnicasCompilacion/src/main/java/finalCompiladores/TrabajoFinal.g4 by ANTLR 4.13.1
 package finalCompiladores;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -88,6 +88,12 @@ public interface TrabajoFinalVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAccessArray(TrabajoFinalParser.AccessArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link TrabajoFinalParser#inicializacionArreglo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInicializacionArreglo(TrabajoFinalParser.InicializacionArregloContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link TrabajoFinalParser#asignacion}.
 	 * @param ctx the parse tree

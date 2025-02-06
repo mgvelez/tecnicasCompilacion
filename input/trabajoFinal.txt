@@ -1,46 +1,51 @@
-int producto(int z, int w) {
-    int a = z * w;
-    return a;
-}
+{
+    int t = 0;
 
-void main() {
-    int x = 5;
-    int y = 10;
-    int array [3] = 20;
-    float f = 3.14;
-    int z;
-    int h
-
-    if (x < y) {
-        y = x + 2;
-    } else {
-        x = y + 2;
+    int producto(int z, int w) {
+        int a = z * w;
+        return a;
     }
 
-    for (int i = 0; i < x; i++) {
-        x++;
-        z = x + y;
-    }
+    void main() {
+        int x = 5;
+        int y = 10;
+        int array [3] = 20;
+        float f = 3.14;
+        int z;
+        int h
 
-    while (z > 0) {
-        z = z - 2;
-        if (z == 6) {
-            break;
+        if (x < y) {
+            y = x + 2;
+        } else {
+            x = y + 2;
         }
+
+        for (int i = 0; i < x; i++) {
+            x++;
+            z = x + y;
+        }
+
+        while (z > 0) {
+            z = z - 2;
+            if (z == 6) {
+                break;
+            }
+        }
+        int prod2 = x * y;
+        // Algunas operaciones para probar subexpresiones y propagación
+           int sum = (x + y) + (x + y);
+           float div = (x / y) + (x + y);
+           int prod = (3 * 4) * (x + 2);  // (3*4) = 12 se puede optimizar
+           float f2 = f + 1.86;          // 3.14 + 1.86 = 5.0 => propagación
+
+        // Asignaciones repetidas
+           int w = sum;
+           sum = w + w;
+
+        array[0] = sum;
+        array[1] = w + 10;
+        array[2] = array[1] * 2;
+        prod = producto(3 , 4);
+
     }
-
-    // Algunas operaciones para probar subexpresiones y propagación
-       int sum = (x + y) + (x + y);
-       int prod = (3 * 4) * (x + 2);  // (3*4) = 12 se puede optimizar
-       float f2 = f + 1.86;          // 3.14 + 1.86 = 5.0 => propagación
-
-    // Asignaciones repetidas
-       int w = sum;
-       sum = w + w;
-
-    array[0] = sum;
-    array[1] = w + 10;
-    array[2] = array[1] * 2;
-    prod = producto(3 , 4);
-
 }

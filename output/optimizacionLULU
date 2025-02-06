@@ -1,0 +1,32 @@
+Optimización de Código Intermedio
+---------------------------------
+
+
+; --- Función: bar ---
+bar:
+return 5
+
+; --- Función: foo ---
+foo:
+return c
+
+; --- Función: main ---
+main:
+x = 10
+z = 0
+y = ??factor??
+if t4 goto L0
+goto L1
+L0:
+z = t5
+goto L2
+L1:
+z = 1
+L2:
+L3:
+if t6 goto L4
+goto L5
+L4:
+goto L3
+L5:
+return z

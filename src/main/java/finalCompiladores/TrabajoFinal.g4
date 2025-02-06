@@ -55,7 +55,7 @@ NUMERO : DIGITO+ (PUNTO DIGITO*)? ;
 
 ID : LETRA (LETRA | DIGITO | '_')* ;
 
-programa : funcion* EOF ;
+programa : (declaracion | funcion)* EOF;
 
 funcion : tipoDato ID PA parametros? PC bloque ;
 llamadaFuncion : ID PA argumentos? PC;
@@ -68,8 +68,7 @@ bloque : LLA (instruccion | declaracion)* LLC ;
 
 declaracion : tipoDato listaVariables PYC ;
 listaVariables : variable (COMA variable)* ;
-variable :  ID (IGUAL expresion)?
-           |ID array* (IGUAL expresion);
+variable : ID array* (IGUAL (expresion | inicializacionArreglo))?;
 
 instruccion : asignacion
             | ifStmt
@@ -78,12 +77,17 @@ instruccion : asignacion
             | returnStmt
             | bloque
             | BREAK PYC
+            | llamadaFuncion PYC
             ;
 
 array : CORA NUMERO CORC
       ;
 accessArray : ID (CORA expresion CORC)+
             ;
+
+inicializacionArreglo
+    : LLA (expresion (COMA expresion)*)? LLC
+    ;
 
 asignacion : (ID | accessArray) IGUAL expresion PYC
            | incremento PYC

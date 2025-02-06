@@ -1,7 +1,6 @@
 package finalCompiladores;
 
 import org.antlr.v4.runtime.tree.ParseTree;
-import tpDos.TablaSimbolos;
 
 import java.util.*;
 
@@ -13,15 +12,15 @@ import java.util.*;
 
 public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
 
-    private final TablaSimbolos tablaSimbolos;
-    private final List<String> threeAddressCode = new ArrayList<>();
+    private List<String> threeAddressCode = new ArrayList<>();
+    private List<String> threeAddressCodeOptimizado = new ArrayList<>();
 
     // Contadores para temps y labels.
     private int tempCounter = 0;
     private int labelCounter = 0;
 
-    public CaminanteFinal(TablaSimbolos tablaSimbolos) {
-        this.tablaSimbolos = tablaSimbolos;
+    public CaminanteFinal() {
+
     }
 
     /** Genera un nuevo nombre de variable temporal, p. ej. "t0", "t1", etc. */
@@ -44,9 +43,12 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
      */
     @Override
     public String visitPrograma(TrabajoFinalParser.ProgramaContext ctx) {
-        for (TrabajoFinalParser.FuncionContext funcCtx : ctx.funcion()) {
-            visit(funcCtx);
+        threeAddressCode.add("; ====== Inicio del programa ======");
+        // Visitar cada (declaracion | funcion)
+        for (ParseTree child : ctx.children) {
+            visit(child);
         }
+        threeAddressCode.add("; ====== Fin del programa ======");
         return null;
     }
 
@@ -57,15 +59,56 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
     @Override
     public String visitFuncion(TrabajoFinalParser.FuncionContext ctx) {
         String funcName = ctx.ID().getText();
-        threeAddressCode.add("\n; --- Función: " + funcName + " ---");
+        threeAddressCode.add("; === Función: " + funcName + " ===");
         threeAddressCode.add(funcName + ":");
 
         // Visitar el bloque
         visit(ctx.bloque());
 
         // Un "return" implícito si la función es void, etc.:
-        // threeAddressCode.add("return");
+        threeAddressCode.add("; Fin función " + funcName);
         return null;
+    }
+
+    @Override
+    public String visitLlamadaFuncion(TrabajoFinalParser.LlamadaFuncionContext ctx) {
+        String funcName = ctx.ID().getText();
+
+        // Visitar argumentos para producir algo en 3AC
+        List<String> argTemps = new ArrayList<>();
+        if (ctx.argumentos() != null) {
+            for (TrabajoFinalParser.ExpresionContext e : ctx.argumentos().expresion()) {
+                argTemps.add(visit(e));
+            }
+        }
+
+        // Generar un temp para el valor de retorno
+        String retTemp = newTemp();
+        // Ejemplo simple:
+        threeAddressCode.add(retTemp + " = llamada a " + funcName + "(" + String.join(", ", argTemps) + ")");
+        return retTemp;
+    }
+
+    @Override
+    public String visitAccessArray(TrabajoFinalParser.AccessArrayContext ctx) {
+        // Nombre base
+        String arrayName = ctx.ID().getText();
+        // "currentRef" apunta a arrayName al comienzo
+        String currentRef = arrayName;
+
+        for (TrabajoFinalParser.ExpresionContext idx : ctx.expresion()) {
+            // idxTemp = visitar la expresión del índice
+            String idxTemp = visit(idx);
+            // nuevo temporal
+            String newTemp = newTemp();
+            // generamos "newTemp = currentRef[idxTemp]"
+            threeAddressCode.add(newTemp + " = " + currentRef + "[" + idxTemp + "]");
+            // actualizamos la referencia
+            currentRef = newTemp;
+        }
+
+        // Al final, currentRef es la "dirección" o "valor" del elemento
+        return currentRef;
     }
 
     /**
@@ -74,6 +117,7 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
      */
     @Override
     public String visitBloque(TrabajoFinalParser.BloqueContext ctx) {
+        threeAddressCode.add("; { Bloque }");
         for (ParseTree child : ctx.children) {
             // child puede ser una declaración o una instrucción
             visit(child);
@@ -133,16 +177,27 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
      */
     @Override
     public String visitAsignacion(TrabajoFinalParser.AsignacionContext ctx) {
-        // Caso 1: "ID = expresion;"
-        if (ctx.ID() != null && ctx.expresion() != null) {
+        // 1) Caso: ID = expresion
+        if (ctx.ID() != null) {
             String leftVar = ctx.ID().getText();
             String rExpr = visit(ctx.expresion());
             threeAddressCode.add(leftVar + " = " + rExpr);
         }
-        // Caso 2: "incremento PYC"
+        // 2) Caso: accessArray = expresion
+        else if (ctx.accessArray() != null) {
+            // Visitar la regla accessArray => produce un temp con "arreglo[idx]"
+            String arrRef = visit(ctx.accessArray());
+            String rExpr = visit(ctx.expresion());
+            // Generar: "arrRef = rExpr"
+            // (En 3AC simplificado, "t1[t2] = X" a veces se maneja con la misma notación "t3 = arr[t2]"
+            //  pero para asignar al array, podrías escribir "arrRef <- rExpr" con otra convención)
+            threeAddressCode.add(arrRef + " = " + rExpr);
+        }
+        // 3) Caso: incremento
         else if (ctx.incremento() != null) {
             visit(ctx.incremento());
         }
+
         return null;
     }
 
@@ -431,6 +486,13 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
         else if (ctx.incremento() != null) {
             return visit(ctx.incremento());
         }
+        else if (ctx.llamadaFuncion() != null) {
+            return visit(ctx.llamadaFuncion());
+        }
+        else if (ctx.accessArray() != null) {
+            // <- Agrega esto
+            return visit(ctx.accessArray());
+        }
         // Caso no contemplado
         return "??factor??";
     }
@@ -448,6 +510,21 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
      */
     public List<String> getThreeAddressCode() {
         return threeAddressCode;
+    }
+
+    /**
+     * Devuelve el listado de instrucciones en tres direcciones.
+     */
+    public List<String> getThreeAddressCodeOptimizado() {
+        return threeAddressCodeOptimizado;
+    }
+
+    /**
+     *  realiza optimizaciones simples
+     */
+
+    public void optimizeCodeV2() {
+        this.threeAddressCodeOptimizado = OptimizadorCodigo.optimizarCodigo(this.threeAddressCode);
     }
 
     /**
@@ -554,11 +631,6 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
             return false;
         }
     }
-
-
-
-
-
 
 }
 
