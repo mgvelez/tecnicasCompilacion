@@ -158,9 +158,7 @@ public class OptimizadorCodigo {
     /**
      * Reemplaza en la línea las referencias a "tX" que no se haya visto
      * para inline sencillo. (Aquí es muy naive: no sabemos la expresión original.)
-     * Lo dejamos simple: no sustituyas "tX" por nada,
-     * a menos que quieras un approach más complejo.
-     * Para un approach "fuerte", requerimos guardar "temp -> expr" en un map.
+     * Lo dejamos simple: no sustituyas "tX" por nada
      */
     private static String inlineTemps(String line, Map<String,Integer> usage) {
         // Versión minimal: no hacemos nada
