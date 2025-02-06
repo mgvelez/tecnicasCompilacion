@@ -455,108 +455,96 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
      */
 
     public void optimizeCode() {
-        // almacenar valores constantes identificados
         Map<String, String> constantValues = new HashMap<>();
-        // rastrear mapeos de variables temporales a expresiones simplificadas
         Map<String, String> tempVarMapping = new HashMap<>();
-        //  almacenar las variables que realmente se usan en el código
         Set<String> usedVariables = new HashSet<>();
-        // lista donde se guardará el código optimizado
         List<String> optimized = new ArrayList<>();
 
-        // Identificar variables utilizadas correctamente
-        // iterar sobre el código intermedio y analizar qué variables están siendo usadas en expresiones
+        // Identificar variables utilizadas en el código
         for (String line : threeAddressCode) {
             String[] parts = line.split("=");
             if (parts.length == 2) {
                 String rightExpr = parts[1].trim();
-                // dividir la expresión en tokens para encontrar las variables que aparecen en el lado derecho
                 String[] tokens = rightExpr.split("[\\s+()*/-]");
                 for (String token : tokens) {
                     if (!isNumeric(token) && !token.isEmpty()) {
-                        usedVariables.add(token); // agregar la variable al conjunto de usadas
+                        usedVariables.add(token);
                     }
                 }
             }
         }
 
-        //Optimización principal
+        // Optimización del código
         for (String line : threeAddressCode) {
             String[] parts = line.split("=");
             if (parts.length != 2) {
-                // Si la línea no es una asignación válida, la agrego directamente sin cambios
-                optimized.add(line);
+                optimized.add(line);  // Se mantiene cualquier línea que no sea una asignación
                 continue;
             }
 
-            String leftVar = parts[0].trim();  // Variable en el lado izquierdo de la asignación
-            String rightExpr = parts[1].trim(); // Expresión en el lado derecho
-            String[] tokens = rightExpr.split("\\s+"); // Divido la expresión en tokens
+            String leftVar = parts[0].trim();
+            String rightExpr = parts[1].trim();
 
-            // identificar operandos y operador
-            String operand1 = tokens.length > 0 ? tokens[0] : null;
-            String op = tokens.length > 1 ? tokens[1] : null;
-            String operand2 = tokens.length > 2 ? tokens[2] : null;
-
-            // Propagación de constantes (solo si la variable izquierda no es temporal)
-            if (!leftVar.startsWith("t")) {
-                operand1 = constantValues.getOrDefault(operand1, operand1);
-                operand2 = operand2 != null ? constantValues.getOrDefault(operand2, operand2) : null;
+            // Si leftVar es un temporal ya optimizado, propagamos el valor
+            if (tempVarMapping.containsKey(rightExpr)) {
+                rightExpr = tempVarMapping.get(rightExpr);
             }
 
-            // Evaluación de expresiones constantes seguras
-            if (isNumeric(operand1) && operand2 != null && isNumeric(operand2) && op != null) {
-                // Si la expresión es completamente numérica, la evaluamos en tiempo de compilación
-                int result = evaluateExpression(Integer.parseInt(operand1), Integer.parseInt(operand2), op);
-                rightExpr = String.valueOf(result);
-            } else if (operand2 == null) {
-                // Si la expresión solo tiene un operando, simplemente lo asignamos
-                rightExpr = operand1;
-            } else {
-                // Si no se puede evaluar en tiempo de compilación, reconstruyo la expresión original
-                rightExpr = operand1 + " " + op + " " + operand2;
-            }
+            // Evaluación de expresiones constantes
+            rightExpr = evaluateConstantExpression(rightExpr, constantValues);
 
             // Eliminación de asignaciones redundantes
-            if (leftVar.equals(rightExpr)) continue; // Si la asignación es innecesaria, la ignoro
+            if (leftVar.equals(rightExpr)) continue;
 
-            // Eliminación de código muerto mejorada
-            if (!usedVariables.contains(leftVar) && !leftVar.startsWith("t")) continue; // Si la variable no se usa, elimino la asignación
+            // Eliminación de código muerto (si la variable no se usa)
+            if (!usedVariables.contains(leftVar) && leftVar.startsWith("t")) continue;
 
-            // Corrección de propagación de temporales
+            // Guardar en temporales o en la lista optimizada
             if (leftVar.startsWith("t")) {
-                tempVarMapping.put(leftVar, rightExpr); // Si es una variable temporal, guardo su valor para propagación
+                tempVarMapping.put(leftVar, rightExpr);
             } else {
-                optimized.add(leftVar + " = " + rightExpr); // Agrego la asignación optimizada
+                optimized.add(leftVar + " = " + rightExpr);
             }
 
-            // Solo guardar constantes en variables no temporales
+            // Guardar constantes en variables no temporales
             if (!leftVar.startsWith("t") && isNumeric(rightExpr)) {
-                constantValues.put(leftVar, rightExpr); // Si la variable es no temporal y tiene un valor constante, lo guardo
+                constantValues.put(leftVar, rightExpr);
             }
         }
 
-        // reemplazar el código original con la versión optimizada
+        // Reemplazar el código original con el optimizado
         threeAddressCode.clear();
         threeAddressCode.addAll(optimized);
     }
 
+    // Evaluar expresiones constantes con propagación de constantes
+    private String evaluateConstantExpression(String expr, Map<String, String> constantValues) {
+        String[] tokens = expr.split("\\s+");
+        if (tokens.length < 3) return expr;
 
+        String operand1 = constantValues.getOrDefault(tokens[0], tokens[0]);
+        String op = tokens[1];
+        String operand2 = constantValues.getOrDefault(tokens[2], tokens[2]);
 
-    // evaluar expresiones aritméticas
+        if (isNumeric(operand1) && isNumeric(operand2)) {
+            int result = evaluateExpression(Integer.parseInt(operand1), Integer.parseInt(operand2), op);
+            return String.valueOf(result);
+        }
+        return expr;
+    }
+
+    // Evaluar operaciones aritméticas
     private int evaluateExpression(int operand1, int operand2, String op) {
         switch (op) {
             case "+": return operand1 + operand2;
             case "-": return operand1 - operand2;
             case "*": return operand1 * operand2;
-            case "/": return (operand2 != 0) ? operand1 / operand2 : 0; // Evitar división por 0
+            case "/": return (operand2 != 0) ? operand1 / operand2 : 0;
             default: return 0;
         }
     }
 
-    /**
-     * Método auxiliar que dice si una string es un número
-     */
+    // Comprobar si una cadena es numérica
     private boolean isNumeric(String str) {
         if (str == null || str.trim().isEmpty()) return false;
         try {
@@ -566,6 +554,9 @@ public class CaminanteFinal extends TrabajoFinalBaseVisitor<String> {
             return false;
         }
     }
+
+
+
 
 
 

@@ -1,0 +1,32 @@
+// Función bar: simplemente devuelve 5
+int bar() {
+    return 5;
+}
+
+// Función foo: devuelve la suma de dos números
+int foo(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int x = 10;
+    int y;
+    int z = 0;
+
+    // Llamada a foo con valores constantes
+    y = foo(3, 7); // foo(3, 7) = 10
+
+    // Operación condicional basada en el valor de y
+    if (y > 10) {
+        z = y * 2;  // Este bloque no se ejecutará porque y = 10
+    } else {
+        z = 1;  // Se ejecuta, z se establece a 1
+    }
+
+    // Bucle while para incrementar z hasta que sea mayor o igual a 50
+    while (z < 50) {
+        z += 5;
+    }
+
+    return 0;
+}

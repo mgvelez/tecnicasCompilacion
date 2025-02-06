@@ -1,0 +1,39 @@
+// Función declarada, pero NO utilizada
+int bar() {
+    return 5;
+}
+
+// Función usada en main (usuario)
+int foo(int a, int b) {
+    int c = a + b;
+    return c;
+}
+
+int main() {
+    int x = 10;
+    int y;
+    int z = 0;
+    int i; // Declarado, pero NO usado
+
+    // Pequeña secuencia para ver propagación de constantes/repetición
+    int temp = x + 2;       // temp = 12
+    int result = temp + 2;  // result = 14
+    int result2 = temp + 2; // result2 = 14 (repetición de temp+2)
+
+    // Llamado a función sin arreglos
+    y = foo((x + 2), (x + 1)); // foo(10+2, 10+1) => foo(12, 11)
+
+    // Estructura if-else optimizada
+    if (y > 10) {
+        z = y * 4;  // z = (y * 2) * 2
+    } else {
+        z = 1;
+    }
+
+    // Ciclo while para verificar llaves y control de flujo
+    while (z < 50) {
+        z += 5;
+    }
+
+    return z;
+}

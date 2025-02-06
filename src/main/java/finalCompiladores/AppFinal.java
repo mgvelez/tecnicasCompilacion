@@ -14,7 +14,7 @@ public class AppFinal {
         System.out.println("=== Iniciando análisis ===");
         try {
             // 1) Leer el archivo de entrada
-            CharStream input = CharStreams.fromFileName("input/ejemploLu.txt");
+            CharStream input = CharStreams.fromFileName("input/entrada.txt");
 
             // 2) Crear el lexer y tokenizar
             TrabajoFinalLexer lexer = new TrabajoFinalLexer(input);
